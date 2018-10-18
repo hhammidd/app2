@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/istatit")
-public class IstatItController {
+public class IstatItController  {
     @Autowired
     private IstatItService istatItService;
 
