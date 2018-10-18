@@ -7,10 +7,7 @@ import com.hamidApp1.model.istat.Istat_it_filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,20 +31,18 @@ public class IstatItQueryDaoImpl implements IstatItQueryDao {
         return  istatItDao.findOne(id_region);
     }
 
+    @PersistenceUnit
+    protected EntityManagerFactory emf;
+    @PersistenceContext
+    protected EntityManager em;
     @Override
     public List<Istat_it> getAllIstatFilter(Istat_it_filter input) {
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("User");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
 
         String usersQueryStr = "SELECT u FROM com.hamidApp1.model.istat.Istat_it u WHERE id_province = " + input.getId_province() +" AND id_region = " + input.getId_region();
         System.out.println("user: " + usersQueryStr);
         TypedQuery<Istat_it> usersQuery = em.createQuery(usersQueryStr, Istat_it.class);
         System.out.println("user: " + usersQuery);
         List<Istat_it> usersRes = usersQuery.getResultList();
-
-        em.getTransaction().commit();
         return usersRes;
     }
 
