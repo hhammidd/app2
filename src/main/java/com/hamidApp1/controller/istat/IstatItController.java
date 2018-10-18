@@ -33,7 +33,7 @@ public class IstatItController  {
         return istatItService.findByidRegion(id_region);
     }
 
-    @RequestMapping(value = "/filter", method = RequestMethod.POST)
+    @RequestMapping( value = "/filter", method = RequestMethod.POST)
     public List<Istat_it> getHistMailList(
             @RequestBody @Valid Istat_it_filter input) throws SQLException {
             return istatItService.getHistMailList(input);
