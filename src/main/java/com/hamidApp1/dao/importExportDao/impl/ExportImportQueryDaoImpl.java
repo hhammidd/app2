@@ -106,24 +106,25 @@ public class ExportImportQueryDaoImpl implements ExportImportQueryDao {
                 exportImportCsvBeanList.add(exportImportCsvObj);
             }
 
-            insertLoadedCsvToDb(exportImportCsvBeanList);
+            //insertLoadedCsvToDb(exportImportCsvBeanList);
 
             if (processesRows > 0) {
                 sourceFileMap.put(exportImportCsvObj.getSource_file(), processesRows);
                 insertLoadCsvLog(sourceFileMap, userCode);
             } else {
                 result = 2;
+            } if (result == 0) {
+                // an example for delete by the
+                //deleteLoadCsvLog("C");
             }
 
-                deleteLoadCsvLog("0200801615-SSB");
-            
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
 
-        return 0;
+        return result;
     }
 
     private void deleteLoadCsvLog(String thisId) {
