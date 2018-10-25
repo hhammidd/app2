@@ -24,4 +24,13 @@ public class ExportImportServiceImpl implements ExportImportService {
         }
 
     }
+
+    @Override
+    public int excelImportLoadJob(MultipartFile excelFileName, String dateIn, String userCode) {
+        if (dateIn != null && !dateIn.equals(UNDEFINED) && userCode != null && !userCode.equals(UNDEFINED)){
+            return exportImportQueryDao.excelImportLoadFile(excelFileName, dateIn, userCode);
+        } else {
+            return 2;
+        }
+    }
 }
