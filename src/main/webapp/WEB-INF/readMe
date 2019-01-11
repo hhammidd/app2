@@ -1,0 +1,14 @@
+ 15.2. The DispatcherServlet
+Spring's web MVC framework is, like many other web MVC frameworks, request-driven, designed
+around a central servlet that dispatches requests to controllers and offers other functionality
+ that facilitates the development of web applications.
+  Spring's DispatcherServlet however, does more than just that.
+   It is completely integrated with the Spring IoC container and as
+    such allows you to use every other feature that Spring has.
+
+    Upon initialization of a DispatcherServlet, the framework looks
+    for a file named [servlet-name]-servlet.xml in the WEB-INF
+    directory of your web application and creates the beans defined
+    there, overriding the definitions of any beans defined with the
+     same name in the global scope.
+

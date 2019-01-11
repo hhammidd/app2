@@ -1,6 +1,7 @@
 package com.hamidApp1.controller.mapFilter;
 
 import com.hamidApp1.model.geoLayersModel.GeoLayer;
+import com.hamidApp1.model.geoLayersModel.GeoPvFilter;
 import com.hamidApp1.model.geoLayersModel.Istat_Filter;
 import com.hamidApp1.service.geoLayerService.GeoLayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,12 @@ public class MapFilterController {
     @Autowired
     private GeoLayerService geoLayerService;
 
-    @RequestMapping( value = "/filter", method = RequestMethod.POST)
-    public  Map<String,List<Istat_Filter>> getGeoLayerIstat(
+    @RequestMapping( value = "/filterpvbyistat", method = RequestMethod.POST)
+    public  Map<String,List<GeoPvFilter>> getGeoLayerIstat(
             @RequestBody @Valid GeoLayer input) throws SQLException {
-        Map<String,List<Istat_Filter>> results = new HashMap<String, List<Istat_Filter>>();
+        Map<String,List<GeoPvFilter>> results = new HashMap<String, List<GeoPvFilter>>();
 
-        List<Istat_Filter> istat_id = geoLayerService.getgeoLayerIstat(input);
+        List<GeoPvFilter> istat_id = geoLayerService.getgeoLayerIstat(input);
 
         results.put("istat_id", istat_id);
         return results;

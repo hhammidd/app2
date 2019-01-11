@@ -11,8 +11,12 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <!-- See the readMe-->
+    <!--  all requests ending with .form will be handled by the example DispatcherServlet -->
+    <!-- the framework looks for a file named [servlet-name]-servlet.xm-->
     <servlet>
         <servlet-name>dispatcher</servlet-name>
+        <!-- for Dispatcher Servlet you need add pom org.springFramework dependency-->
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
